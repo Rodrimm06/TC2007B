@@ -44,7 +44,7 @@ import com.example.tc2007b.components.PasswordTextField
 
 @Preview(showBackground = true)
 @Composable
-fun login(
+fun Login(
     modifier: Modifier = Modifier
 ){
 
