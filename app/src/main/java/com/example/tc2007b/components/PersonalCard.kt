@@ -42,7 +42,7 @@ fun PersonalCard(
             // Ausente se pone de color rojo
             Text(
                 person.status.time,
-                color = if (person.status == stat.ausente) {
+                color = if (person.status == stat.absent) {
                     MaterialTheme.colorScheme.error
                 } else {
                     MaterialTheme.colorScheme.onSurface

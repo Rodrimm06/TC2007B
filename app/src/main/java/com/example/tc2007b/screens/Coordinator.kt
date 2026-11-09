@@ -26,7 +26,7 @@ import com.example.tc2007b.model.stat
 fun Coordinator(user: User, onLogout: () -> Unit, modifier: Modifier = Modifier){
     // Solo el personal de su estancia
     val personal = getPersonal().filter { it.residence_id == user.residence_id }
-    val absent = personal.count { it.status == stat.ausente }
+    val absent = personal.count { it.status == stat.absent }
     val late = personal.count { it.status == stat.late }
     val available = personal.size - absent
 

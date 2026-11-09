@@ -26,7 +26,7 @@ fun Calendar(user: User, modifier: Modifier = Modifier){
             .filter { it.residence_id == user.residence_id }
             .sortedBy { it.schedule }
     }
-    val absent = personal.count { it.status == stat.ausente }
+    val absent = personal.count { it.status == stat.absent }
 
     Column(modifier.fillMaxSize().padding(16.dp)) {
         Text("Horario de hoy", style = MaterialTheme.typography.headlineMedium)

@@ -36,7 +36,7 @@ fun Direction(user: User, onLogout: () -> Unit, modifier: Modifier = Modifier){
             items(residence) { e ->
                 // Mostrar informacion de cada estancia
                 val fromResidence = personal.filter { it.residence_id == e.id }
-                val absent = fromResidence.count { it.status == stat.ausente }
+                val absent = fromResidence.count { it.status == stat.absent }
                 val late = fromResidence.count { it.status == stat.late }
                 Card(Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp)) {
