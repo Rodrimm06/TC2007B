@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.tc2007b.model.User
 import java.util.stream.IntStream
 
-
+// Tarjeta reutilizable para mostrar los usuarios
 @Composable
 fun UserCard(
     User: User,
