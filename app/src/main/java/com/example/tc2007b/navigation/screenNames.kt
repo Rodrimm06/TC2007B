@@ -21,4 +21,12 @@ sealed class ScreenNames(val route: String){
     data object Tasks: ScreenNames("tasks")
     // Pantalla para hacer la asistencia
     data object Attendance: ScreenNames("attendance")
+    // Pantalla para agregar personal
+    data object StaffAdd: ScreenNames("staff_add")
+    // Pantalla de confirmacion de asistencia
+    data object AttendanceConfirmation: ScreenNames("attendance_confirmation")
+    // Pantalla para ver las estancias
+    data object Residences: ScreenNames("residences")
+    // Pantalla para consultar asistencia
+    data object Reports: ScreenNames("reports")
 }
