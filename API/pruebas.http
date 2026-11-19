@@ -1,0 +1,52 @@
+### Cambia la URL si la API no esta en tu computadora
+@base = http://localhost:3000
+@token = PEGA_AQUI_EL_TOKEN
+
+### Comprobar el servidor
+GET {{base}}/
+
+### Login: usa el usuario configurado en tu .env
+POST {{base}}/login
+Content-Type: application/json
+
+{ "correo": "direccion@example.com", "password": "TU_CONTRASENA" }
+
+### Perfil de la sesion
+GET {{base}}/perfil
+Authorization: Bearer {{token}}
+
+### Crear una estancia (direccion)
+POST {{base}}/estancias
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "nombre": "Estancia Arcoiris", "ubicacion": "Puebla" }
+
+### Crear usuario (direccion; cambia el id de la estancia)
+POST {{base}}/usuarios
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "nombre": "Coordinadora", "correo": "coordinadora@example.com", "password": "CAMBIA_ESTA_CONTRASENA", "rol": "coordinacion", "estancia_id": 1 }
+
+### Ver personal (usa el token de la coordinadora)
+GET {{base}}/personal
+Authorization: Bearer {{token}}
+
+### Agregar personal (coordinacion)
+POST {{base}}/personal
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "nombre": "Lucia Herrera", "puesto": "Educadora", "correo": "lucia@example.com", "telefono": "", "entrada": "08:00", "salida": "16:00" }
+
+### Registrar entrada o salida (coordinacion)
+POST {{base}}/asistencias
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "personal_id": 1, "tipo": "entrada" }
+
+### Consultar asistencia de hoy
+GET {{base}}/asistencias
+Authorization: Bearer {{token}}

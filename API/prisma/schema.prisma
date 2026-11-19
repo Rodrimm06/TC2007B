@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Una estancia puede tener usuarios y personal
+model Estancia {
+  id       Int        @id @default(autoincrement())
+  nombre   String     @unique
+  ubicacion String    @default("")
+  usuarios Usuario[]
+  personal Personal[]
+
+  @@map("estancias")
+}
+
+// Los roles son direccion y coordinacion
+model Usuario {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  correo      String    @unique
+  password    String
+  rol         String
+  estancia_id Int?
+  estancia    Estancia? @relation(fields: [estancia_id], references: [id])
+
+  @@map("usuarios")
+}
+
+model Personal {
+  id          Int          @id @default(autoincrement())
+  nombre      String
+  puesto      String
+  correo      String       @default("")
+  telefono    String       @default("")
+  entrada     String
+  salida      String
+  activo      Boolean      @default(true)
+  estancia_id Int
+  estancia    Estancia     @relation(fields: [estancia_id], references: [id])
+  asistencias Asistencia[]
+
+  @@map("personal")
+}
+
+// Una persona tiene como maximo un registro por dia
+model Asistencia {
+  id          Int       @id @default(autoincrement())
+  personal_id Int
+  fecha       DateTime  @db.Date
+  entrada     DateTime?
+  salida      DateTime?
+  personal    Personal  @relation(fields: [personal_id], references: [id])
+
+  @@unique([personal_id, fecha])
+  @@map("asistencias")
+}
