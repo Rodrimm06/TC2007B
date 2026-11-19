@@ -15,6 +15,9 @@ Content-Type: application/json
 GET {{base}}/perfil
 Authorization: Bearer {{token}}
 
+### Sin token: debe responder 401
+GET {{base}}/usuarios
+
 ### Crear una estancia (direccion)
 POST {{base}}/estancias
 Authorization: Bearer {{token}}
@@ -29,6 +32,17 @@ Content-Type: application/json
 
 { "nombre": "Coordinadora", "correo": "coordinadora@example.com", "password": "CAMBIA_ESTA_CONTRASENA", "rol": "coordinacion", "estancia_id": 1 }
 
+### Ver usuarios (direccion)
+GET {{base}}/usuarios
+Authorization: Bearer {{token}}
+
+### Cambiar el nombre de un usuario (direccion; cambia el id)
+PUT {{base}}/usuarios/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "nombre": "Coordinadora actualizada" }
+
 ### Ver personal (usa el token de la coordinadora)
 GET {{base}}/personal
 Authorization: Bearer {{token}}
@@ -40,6 +54,13 @@ Content-Type: application/json
 
 { "nombre": "Lucia Herrera", "puesto": "Educadora", "correo": "lucia@example.com", "telefono": "", "entrada": "08:00", "salida": "16:00" }
 
+### Actualizar una persona (coordinacion; cambia el id)
+PUT {{base}}/personal/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "puesto": "Cuidadora" }
+
 ### Registrar entrada o salida (coordinacion)
 POST {{base}}/asistencias
 Authorization: Bearer {{token}}
@@ -49,4 +70,8 @@ Content-Type: application/json
 
 ### Consultar asistencia de hoy
 GET {{base}}/asistencias
+Authorization: Bearer {{token}}
+
+### Dar de baja a una persona sin borrar su asistencia (coordinacion)
+DELETE {{base}}/personal/1
 Authorization: Bearer {{token}}

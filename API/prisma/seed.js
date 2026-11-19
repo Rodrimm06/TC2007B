@@ -5,6 +5,7 @@ const prisma = require('../src/prisma');
 // Crea el primer usuario de direccion si todavia no existe
 async function main() {
   const { ADMIN_NOMBRE, ADMIN_CORREO, ADMIN_PASSWORD } = process.env;
+  // bcrypt solo toma los primeros 72 bytes de la contrasena
   if (!ADMIN_NOMBRE || !ADMIN_CORREO || !ADMIN_PASSWORD || ADMIN_PASSWORD.length < 8 || Buffer.byteLength(ADMIN_PASSWORD, 'utf8') > 72) {
     throw new Error('Configura ADMIN_NOMBRE, ADMIN_CORREO y ADMIN_PASSWORD (8 a 72 bytes) en .env');
   }

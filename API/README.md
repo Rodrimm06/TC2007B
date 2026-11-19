@@ -6,8 +6,7 @@ La API guarda usuarios, estancias, personal y registros de asistencia. Los datos
 
 ## Archivos
 
-- `src/index.js`: inicia el servidor.
-- `src/app.js`: rutas de la API.
+- `src/index.js`: rutas de la API e inicio del servidor.
 - `src/prisma.js`: conexion con la base de datos.
 - `src/middleware/auth.js`: revisa el token y el rol.
 - `prisma/schema.prisma`: modelos de la base de datos.
@@ -73,11 +72,4 @@ La API todavia no tiene una URL publica y no modifica la app automaticamente. Pa
 
 ## Pruebas
 
-Las pruebas necesitan una **base de datos de prueba separada**, con la migracion aplicada. Nunca uses una base con datos reales para las pruebas. En PowerShell:
-
-```powershell
-$env:TEST_DATABASE_URL = 'postgresql://usuario:contrasena@localhost:5432/sonrisas_prueba'
-npm test
-```
-
-Las pruebas crean sus propios datos y los borran al terminar. Si `TEST_DATABASE_URL` no esta definida, la prueba se omite.
+El archivo `pruebas.http` contiene peticiones de ejemplo para probar la API, como en el material de clase. Usa una base de datos de prueba y cambia los datos y tokens del archivo antes de enviar las peticiones.
