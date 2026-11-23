@@ -20,8 +20,8 @@ data class User(
 )
 // Funcion para obtener los usuarios
 fun getUser(): List<User> = listOf(
-    User(1, "Manuel","1234", "Residencia 1", 1, role.coordinacion),
-    User(3,"Juana","passwd","Residencia 2",2,role.coordinacion,),
+    User(1, "Isabella","1234", "Residencia 1", 1, role.coordinacion),
+    User(3,"Juana","1234","Residencia 2",2,role.coordinacion,),
     User(4,"Robert","1234","",0,role.direccion)
 )
 

@@ -3,6 +3,7 @@ package com.example.tc2007b
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.Composable
 import com.example.tc2007b.navigation.SonrisasApp
 import com.example.tc2007b.ui.theme.TC2007BTheme
 
@@ -23,3 +24,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
